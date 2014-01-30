@@ -24,7 +24,7 @@ module Lita
 
           split            = "-------------------------------------------------------------------------------------------"
 
-          response.reply "#{title} \n #{split} \n #{route} \n #{split} \n #{delivery_date} \n #{split} \n #{current_location} \n #{split} \n #{delivery_address} \n #{split} \n #{return_address} \n #{split} \n #{payment} \n #{split} \n #{documents}"
+          response.reply "#{title}\n#{split}\n#{route}\n#{delivery_date}\n#{current_location}\n#{delivery_address}\n#{return_address}\n#{payment}\n#{documents}"
 
         else
           Lita.logger.error "#{self.class}: Unable to get info: #{http_resp.body}"
