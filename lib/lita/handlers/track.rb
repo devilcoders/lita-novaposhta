@@ -3,7 +3,7 @@ require "lita"
 module Lita
   module Handlers
     class Track < Handler
-      route /^track\s+(.+)/, :track, help: { "track <number>" => "Отследивает посылку по номеру декларации" }
+      route /^track\s+(.+)/, :track, help: { "track NUBER" => "Отслеживает посылку по номеру декларации" }
 
       def track(response)
         query = response.matches[0][0]
