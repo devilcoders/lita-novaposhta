@@ -17,7 +17,7 @@ module Lita
           route            = "#{root['table']['tr'][0]['td'][0]['p']}: #{root['table']['tr'][0]['td'][1]['p']}"
           delivery_date    = "#{root['table']['tr'][1]['td'][0]['p']}: #{root['table']['tr'][1]['td'][1]['p']}"
           current_location = "#{root['table']['tr'][2]['td'][0]['p']}: #{root['table']['tr'][2]['td'][1]['p']['content']}"
-          delivery_address = "#{root['table']['tr'][3]['td'][0]['p']}: #{root['table']['tr'][3]['td'][1]['a']['content']}"
+          delivery_address = "#{root['table']['tr'][3]['td'][0]['p']}: #{root['table']['tr'][3]['td'][1]['a']['content']} (<http://novaposhta.ua#{root['table']['tr'][3]['td'][1]['a']['href']}>)"
           return_address   = "#{root['table']['tr'][4]['td'][0]['p']}: #{root['table']['tr'][4]['td'][1]['p']}"
           payment          = "#{root['table']['tr'][5]['td'][0]['p']}: #{root['table']['tr'][5]['td'][1]['p']}"
           documents        = "#{root['table']['tr'][6]['td'][0]['p']}: #{root['table']['tr'][6]['td'][1]['p']}"
