@@ -16,15 +16,23 @@ module Lita
           title            = root['p']
           route            = "#{root['table']['tr'][0]['td'][0]['p']}: #{root['table']['tr'][0]['td'][1]['p']}"
           delivery_date    = "#{root['table']['tr'][1]['td'][0]['p']}: #{root['table']['tr'][1]['td'][1]['p']}"
-          current_location = "#{root['table']['tr'][2]['td'][0]['p']}: #{root['table']['tr'][2]['td'][1]['p']['content']}"
-          delivery_address = "#{root['table']['tr'][3]['td'][0]['p']}: #{root['table']['tr'][3]['td'][1]['a']['content']} (<http://novaposhta.ua#{root['table']['tr'][3]['td'][1]['a']['href']}>)"
-          return_address   = "#{root['table']['tr'][4]['td'][0]['p']}: #{root['table']['tr'][4]['td'][1]['p']}"
-          payment          = "#{root['table']['tr'][5]['td'][0]['p']}: #{root['table']['tr'][5]['td'][1]['p']}"
-          documents        = "#{root['table']['tr'][6]['td'][0]['p']}: #{root['table']['tr'][6]['td'][1]['p']}"
+          if root['table']['tr'][2] != nil
+            current_location = "#{root['table']['tr'][2]['td'][0]['p']}: #{root['table']['tr'][2]['td'][1]['p']['content']}"
+            delivery_address = "#{root['table']['tr'][3]['td'][0]['p']}: #{root['table']['tr'][3]['td'][1]['a']['content']} (<http://novaposhta.ua#{root['table']['tr'][3]['td'][1]['a']['href']}>)"
+            return_address   = "#{root['table']['tr'][4]['td'][0]['p']}: #{root['table']['tr'][4]['td'][1]['p']}"
+            payment          = "#{root['table']['tr'][5]['td'][0]['p']}: #{root['table']['tr'][5]['td'][1]['p']}"
+            documents        = "#{root['table']['tr'][6]['td'][0]['p']}: #{root['table']['tr'][6]['td'][1]['p']}"
+          end
 
           split            = "-------------------------------------------------------------------------------------------"
 
-          response.reply "#{title}\n#{split}\n#{route}\n#{delivery_date}\n#{current_location}\n#{delivery_address}\n#{return_address}\n#{payment}\n#{documents}"
+          data = ""
+          data << "#{title}\n#{split}\n#{route}\n#{delivery_date}\n"
+          if root['table']['tr'][2] != nil
+            data << "#{current_location}\n#{delivery_address}\n#{return_address}\n#{payment}\n#{documents}"
+          end
+
+          response.reply data
 
         else
           Lita.logger.error "#{self.class}: Unable to get info: #{http_resp.body}"
